@@ -1,6 +1,7 @@
 // src/HeroSection.js
 import React from 'react';
 import { motion } from 'framer-motion';
+import BlurText from './BlurText';
 
 // --- Zmienne Animacji ---
 const containerVariants = {
@@ -39,26 +40,22 @@ const buttonVariants = {
 
 const HeroSection = () => {
   const name = "DAWID JASPER";
-  
+  // Scroll do sekcji 'Kim jest Dawid Jasper?'
+  const handleScroll = () => {
+    const aboutSection = document.getElementById('about-section');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div style={styles.heroContainer}>
-      <motion.h1
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        style={styles.title}
-      >
-        {name.split("").map((char, index) => (
-          <motion.span 
-            key={index} 
-            variants={letterVariants}
-            style={styles.letter}
-          >
-            {char === " " ? "\u00A0" : char} 
-          </motion.span>
-        ))}
-      </motion.h1>
-      
+      <BlurText
+        text={name}
+        delay={120}
+        animateBy="words"
+        direction="top"
+        className="text-4xl mb-8"
+      />
       <motion.p
         variants={subtitleVariants}
         initial="hidden"
@@ -67,7 +64,17 @@ const HeroSection = () => {
       >
         Kultowy streamer, pogromca gier i król polskiego internetu. 🎬
       </motion.p>
-
+      <motion.button
+        variants={buttonVariants}
+        initial="hidden"
+        animate="visible"
+        whileHover={{ scale: 1.08, backgroundColor: '#00BFFF', color: '#fff', boxShadow: '0 0 25px #00BFFF' }}
+        whileTap={{ scale: 0.95 }}
+        style={styles.seeMoreButton}
+        onClick={handleScroll}
+      >
+        Zobacz więcej ↓
+      </motion.button>
       <motion.a
         href="https://www.youtube.com/@DawidJasperlive" 
         target="_blank"
@@ -75,7 +82,7 @@ const HeroSection = () => {
         variants={buttonVariants}
         initial="hidden"
         animate="visible"
-        whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(0, 191, 255, 0.6)' }}
+        whileHover={{ scale: 1.05, boxShadow: '0 0 25px #00BFFF' }}
         whileTap={{ scale: 0.95 }}
         style={styles.ctaButton}
       >
@@ -99,38 +106,55 @@ const styles = {
         overflow: 'hidden',
     },
     title: {
-        fontSize: 'clamp(3rem, 10vw, 7rem)', // Responsywny rozmiar
-        fontWeight: '900',
-        marginBottom: '20px',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        color: '#FF4500', // Energetyczny kolor
-        textShadow: '0 0 15px rgba(255, 69, 0, 0.7)', // Efekt poświaty
+      fontSize: 'clamp(3rem, 10vw, 7rem)',
+      fontWeight: '900',
+      marginBottom: '20px',
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      color: '#00BFFF',
+      textShadow: '0 0 18px #00BFFF',
     },
     letter: {
         display: 'inline-block',
         lineHeight: '1.2',
     },
     subtitle: {
-        fontSize: 'clamp(1rem, 3vw, 1.8rem)',
-        marginBottom: '40px',
-        color: '#ccc',
-        maxWidth: '800px',
+      fontSize: 'clamp(1rem, 3vw, 1.8rem)',
+      marginBottom: '40px',
+      color: '#00BFFF',
+      maxWidth: '800px',
+      textShadow: '0 0 8px #00BFFF',
     },
     ctaButton: {
-        padding: '15px 40px',
-        fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
-        fontWeight: 'bold',
-        textDecoration: 'none',
-        borderRadius: '50px',
-        background: '#00BFFF',
-        color: '#111',
-        cursor: 'pointer',
-        border: 'none',
-        boxShadow: '0 10px 30px rgba(0, 191, 255, 0.5)',
-        transition: 'all 0.3s ease',
-    }
+      padding: '15px 40px',
+      fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
+      fontWeight: 'bold',
+      textDecoration: 'none',
+      borderRadius: '50px',
+      background: '#fff',
+      color: '#00BFFF',
+      cursor: 'pointer',
+      border: '2px solid #00BFFF',
+      boxShadow: '0 10px 30px #00BFFF44',
+      transition: 'all 0.3s ease',
+      marginTop: '18px',
+    },
+    seeMoreButton: {
+      padding: '12px 32px',
+      fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+      fontWeight: 'bold',
+      borderRadius: '40px',
+      background: '#00BFFF',
+      color: '#fff',
+      border: 'none',
+      boxShadow: '0 6px 18px #00BFFF88',
+      cursor: 'pointer',
+      marginBottom: '10px',
+      marginTop: '10px',
+      transition: 'all 0.3s',
+      outline: 'none',
+    },
 };
 
 export default HeroSection;

@@ -1,0 +1,29 @@
+/* Podstawowe style dla aplikacji */
+
+
+.App {
+  min-height: 100vh;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  filter: grayscale(1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Montserrat', 'Orbitron', sans-serif;
+  background: transparent;
+}
+
+/* Animowany gradient tła */
+
+
+footer {
+  color: #888;
+  font-size: 0.9rem;
+  background: #0a0a0a;
+  padding: 40px 20px;
+  text-align: center;
+}

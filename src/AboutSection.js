@@ -26,6 +26,7 @@ const AboutSection = () => {
 
     return (
         <motion.div
+            id="about-section"
             ref={ref}
             variants={aboutVariants}
             initial="hidden"
@@ -77,27 +78,32 @@ const AboutSection = () => {
 const styles = {
     aboutContainer: {
         padding: '80px 40px',
-        backgroundColor: '#1B1B1B', 
-        color: 'white',
+        backgroundColor: 'rgba(20,20,30,0.85)',
+        color: '#00BFFF',
         overflow: 'hidden',
-        borderTop: '3px solid #FF4500',
+        borderTop: '3px solid #00BFFF',
         borderBottom: '3px solid #00BFFF',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
+        boxShadow: '0 2px 24px #00BFFF33',
     },
     aboutHeading: {
         fontSize: 'clamp(2rem, 5vw, 3rem)',
         marginBottom: '25px',
         color: '#00BFFF',
-        textShadow: '0 0 10px rgba(0, 191, 255, 0.5)',
+        textShadow: '0 0 18px #00BFFF',
+        fontWeight: 900,
+        letterSpacing: '2px',
     },
     aboutText: {
         fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
         lineHeight: '1.7',
         maxWidth: '900px',
         marginBottom: '20px',
+        color: '#00BFFF',
+        textShadow: '0 0 8px #00BFFF',
     },
     socials: {
         marginTop: '40px',
@@ -112,12 +118,12 @@ const styles = {
         fontWeight: 'bold',
         textDecoration: 'none',
         borderRadius: '30px',
-        background: '#333',
-        color: 'white',
+        background: '#fff',
+        color: '#00BFFF',
         cursor: 'pointer',
-        border: 'none',
+        border: '2px solid #00BFFF',
         transition: 'all 0.3s ease',
-        boxShadow: '0 5px 15px rgba(0,0,0,0.4)',
+        boxShadow: '0 5px 15px #00BFFF44',
     }
 };
 
